@@ -5,10 +5,18 @@
         <div class="container">
             {% for rep in repo %}
                 <a style="text-decoration: none" class="text-dark" href="{{ path('product',{'id':rep.id}) }}">
-                    <div class="bg-light">
+                    <div class="col-md-12">
+                        <div class="card-deck">
+                            <div class="card">
+                            <div class="card-body">
+                                <img src="http://fakeimg.pl/250x200/" class="card-img-top" alt="Card image cap">
                         <h4 class="text-center">{{ rep.name }}</h4>
-                        <p class="text-center">{{ rep.description }}</p>
-
+                                 <p class="text-center">{{ rep.description }}</p>
+                                <p class="text-center">{{ rep.created_at|date('d M Y') }}</p>
+                                <a href="#" class="btn btn-block">Je le veux ! </a>
+                            </div>
+                        </div>
+                        </div>
                     </div>
                 </a>
             {% endfor %}

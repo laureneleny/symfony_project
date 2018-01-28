@@ -4,6 +4,6 @@
     <div class="bg-light">
         <h1 class="text-center">{{ repo.name }}</h1>
         <p class="text-center">{{ repo.description }}</p>
-        <p class="text-center">{{ repo.created_at }}</p>
+        <p class="text-center">{{ repo.created_at|date('d M Y') }}</p>
     </div>
 {% endblock %}

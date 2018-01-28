@@ -35,20 +35,12 @@ class Product
     private $description;
 
     /**
-     * @var datetime
+     * @var DateTime
      *
      * @ORM\Column(type="datetime")
      */
 
     private $created_at;
-
-    public function __construct()
-    {
-        date_default_timezone_set('Europe/Paris');
-        $this->createdAt = new DateTime('now');
-    }
-
-
     /**
      * @return int
      */
@@ -91,14 +83,35 @@ class Product
      */
     public function setDescription($description): Product
     {
-        $this->description = $description;
+       $this->description = $description;
+
+       return $this;
     }
 
 
-    public function getCreatedAt()
+    public function __construct()
     {
+        date_default_timezone_set('Europe/Paris');
+        $this->created_at = new DateTime('NOW');
+    }
 
-        $date = $this->createdAt->format('Y-m-d H:i:s');
+    /**
+     * @return DateTime
+     */
+    public function getCreated_At()
+    {
         return $this->created_at;
     }
+
+
+    /**
+     * @param DateTime $created_at
+     */
+
+    public function setCreatedAt(DateTime $created_at): void
+    {
+        $this->created_at = $created_at;
+    }
+
+
 }
