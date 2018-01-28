@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <div class="bg-light">
+        <h1 class="text-center">{{ repo.name }}</h1>
+        <p class="text-center">{{ repo.description }}</p>
+        <p class="text-center">{{ repo.created_at }}</p>
+    </div>
+{% endblock %}

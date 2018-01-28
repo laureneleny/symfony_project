@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -27,8 +28,31 @@ class Product
     private $name;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     */
+    private $description;
+
+    /**
+     * @var datetime
+     *
+     * @ORM\Column(type="datetime")
+     */
+
+    private $created_at;
+
+    public function __construct()
+    {
+        date_default_timezone_set('Europe/Paris');
+        $this->createdAt = new DateTime('now');
+    }
+
+
+    /**
      * @return int
      */
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,5 +76,29 @@ class Product
         $this->name = $name;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description): Product
+    {
+        $this->description = $description;
+    }
+
+
+    public function getCreatedAt()
+    {
+
+        $date = $this->createdAt->format('Y-m-d H:i:s');
+        return $this->created_at;
     }
 }

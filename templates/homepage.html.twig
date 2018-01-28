@@ -1,7 +1,21 @@
 {% extends 'base.html.twig' %}
 
 {% block main %}
-    <h1>Homepage 😝</h1>
-    <p>{{ thibaud|default('Thibaud is awesome 😍') }}</p>
-    {{ dump(thibaud) }}
+    <h1 style="text-align: center;">Products</h1>
+        <div class="container">
+            {% for rep in repo %}
+                <a style="text-decoration: none" class="text-dark" href="{{ path('product',{'id':rep.id}) }}">
+                    <div class="bg-light">
+                        <h4 class="text-center">{{ rep.name }}</h4>
+                        <p class="text-center">{{ rep.description }}</p>
+
+                    </div>
+                </a>
+            {% endfor %}
+
+
+
+        </div>
+
+
 {% endblock %}

@@ -13,15 +13,32 @@ class DefaultController extends Controller
 {
     /**
      * @Route(path="/", name="homepage")
+     * @param  $id
+     * @return Response
      */
     public function homepage()
     {
         $manager = $this->getDoctrine()->getManager();
         /** @var ProductRepository $repo */
-        $repo = $manager->getRepository(Product::class);
+        /* $prod = new User();
+        $prod
+            ->setUsername('admin')
+            ->setEmail('admin@admin.fr')
+            ->setPlainPassword('admin');
+        $manager->persist($prod);
+        $manager->flush(); */
+
+        $repo = $manager->getRepository(Product::class)->findBy([], null);
+
+        $repos = $manager->getRepository(Product::class)->findAll();
+        $count = count($repos)/12;
+        $count = round($count, 0, PHP_ROUND_HALF_UP);
+
 
         return $this->render('homepage.html.twig', [
-            'thibaud' => 'He\'s awesome anyway 😎',
+            'repo' => $repo,
+            'count' => $count,
         ]);
+
     }
 }

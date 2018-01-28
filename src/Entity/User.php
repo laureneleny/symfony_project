@@ -70,7 +70,7 @@ class User implements AdvancedUserInterface, \Serializable
     public function __construct()
     {
         $this->active = true;
-        $this->roles  = [];
+        $this->roles  = ['ROLE_DEFAULT'];
     }
 
     /**
